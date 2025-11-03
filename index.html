@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Home Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <h2>🏠 Home Control</h2>
+      <nav>
+        <button onclick="showPanel('lights')">Lights</button>
+        <button onclick="showPanel('thermostat')">Thermostat</button>
+        <button onclick="showPanel('security')">Security</button>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header>
+        <h1 id="section-title">Lights</h1>
+      </header>
+
+      <section id="lights" class="panel active">
+        <h3>Living Room Light</h3>
+        <label class="switch">
+          <input type="checkbox" id="living-light" onchange="updateStatus('Living Room Light')">
+          <span class="slider round"></span>
+        </label>
+      </section>
+
+      <section id="thermostat" class="panel">
+        <h3>Thermostat</h3>
+        <input type="range" min="60" max="80" value="72" id="thermo-slider" oninput="updateThermostat(this.value)">
+        <p>Set temperature: <span id="temp-display">72</span>°F</p>
+      </section>
+
+      <section id="security" class="panel">
+        <h3>Front Door</h3>
+        <button onclick="toggleLock()" id="lock-btn">🔒 Locked</button>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
